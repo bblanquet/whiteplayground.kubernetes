@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-back-deployment
+  namespace: wp
+  labels:
+    app: wp-back
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: wp-back
+  template:
+    metadata:
+      labels:
+        app: wp-back
+    spec:
+      containers:
+      - name: back
+        image: kimchiboy/wp_back:latest
+        imagePullPolicy: "Always"
+        envFrom:
+        - configMapRef:
+            name: wp-back-config
+        ports:
+        - containerPort: 8096
+          protocol: TCP

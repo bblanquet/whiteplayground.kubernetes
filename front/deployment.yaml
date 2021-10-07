@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-front
+  namespace: wp
+  labels:
+    app: wp-front
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: wp-front
+  template:
+    metadata:
+      labels:
+        app: wp-front
+    spec:
+      containers:
+      - name: wp-front
+        image: kimchiboy/wp_front:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 8282
+          protocol: TCP

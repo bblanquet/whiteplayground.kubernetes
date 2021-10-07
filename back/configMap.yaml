@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wp-back-config
+  namespace: wp
+  labels:
+    app: wp-back
+data:
+  spring.config.name: "prd"

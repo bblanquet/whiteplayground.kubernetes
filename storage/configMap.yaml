@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wp-storage-config
+  namespace: wp
+  labels:
+    app: wp-storage
+data:
+  POSTGRES_DB: wp
+  POSTGRES_USER: kimchi
+  POSTGRES_PASSWORD: spice
